@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Conversor de Escalas Termométricas</title>
+	<style type="text/css">
+		body {
+			background-color: #4F4F4F;
+		}
+		#aga1 {
+			font-size: 100px;
+		}
+		h1 {
+			font-size: 40px;
+			padding: 0;
+
+		}
+		input[type=text] {
+			height: 30px;
+			width: 250px;
+			font-size: 30px;
+		}
+		input[type=button] {
+			height: 60px;
+			width: 450px;
+			font-size: 30px;
+		}
+		#div1 {
+			background-color: #ADFF2F; 
+			margin: 0 auto;
+			width: 1000px;
+			text-align: center;
+			padding: 30px;
+		}
+		#div2 {
+			background-color: #F0FFFF;
+			margin: 0 auto;
+			width: 1000px;
+			height: 670px;
+			text-align: center;
+			padding: 30px;
+		}
+		#table {
+		    margin-bottom : .5em;
+		    table-layout: fixed;
+		    text-align: left;
+		    border: 0px solid red;
+    		width: 50% !important; 
+    		margin: auto;
+    		padding: 30px;
+		}
+	</style>	
+</head>
+<body>
+	<div id="div1">
+		<h1 id="aga1">Conversor</h1><br>
+	</div>
+	<div id="div2">		
+		<table id="table" style="border-color: #7FFFD4">
+			<tr>
+				<th><h1>Celsius</h1></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="Celsius" id="celsius" onkeyup="calcular(this)"><br></td>
+			</tr>
+			<tr>
+				<th><h1>Fahrenheit</h1></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="Fahrenheit" id="fahrenheit" onkeyup="calcular(this)"><br></td>
+			</tr>
+			<tr>
+				<th><h1>Kelvin</h1></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="Kelvin" id="kelvin" onkeyup="calcular(this)"><br><br><br><td>
+			</tr>
+			<tr>
+				<td><input type="button" name="Limpar" value="Limpar" id="limpar" onclick="limpar()"></td>
+			</tr>
+		</table>
+	</div>	
+	<script type="text/javascript">
+		function calcular(txt){
+			var escolha = txt.id;
+			
+			var celsius = document.getElementById('celsius').value;
+			var fahrenheit = document.getElementById('fahrenheit').value;
+			var kelvin = document.getElementById('kelvin').value;
+			if(escolha == "celsius"){
+				document.getElementById('fahrenheit').value = (1.8*parseFloat(celsius)+32).toFixed(2);
+				document.getElementById('kelvin').value = (parseFloat(celsius)+273.15).toFixed(2);	
+			}else if (escolha == "fahrenheit"){ 
+				document.getElementById('celsius').value = ((parseFloat(fahrenheit)-32)/1.8).toFixed(2);
+				document.getElementById('kelvin').value = ((parseFloat(fahrenheit)-32)*(5/9)+273.15).toFixed(2);
+			}else if(escolha == "kelvin"){
+				document.getElementById('celsius').value = (parseFloat(kelvin) - 273.15).toFixed(2);
+				document.getElementById('fahrenheit').value = ((parseFloat(kelvin)-273.15)*(9/5)+32).toFixed(2);
+			}			
+		}
+		function limpar(){
+			document.getElementById('celsius').value = "";
+			document.getElementById('fahrenheit').value = "";
+			document.getElementById('kelvin').value = "";
+		}
+	</script>
+</body>
+</html>
