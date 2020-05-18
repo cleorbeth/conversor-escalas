@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	
+<style type="text/css">
+    body {
+			background-color: #4F4F4F;
+	}
+    .divTable
+    {
+        display:  table;
+        width:auto;
+        background-color:white;
+        border:1px solid  #666666;
+        border-spacing:5px;
+    }
+
+    .divRow
+    {
+       display:table-row;
+       width:auto;
+    }
+
+    .divCell
+    {
+        float:left;
+        display:table-column;
+        width:200px;
+        background-color:white;
+    }
+    #aga1{
+    	font-size: 60px;
+    }
+    #div1 {
+			background-color: #836FFF; 
+			margin: 0 auto;
+			width: 1000px;
+			text-align: center;
+			padding: 30px;
+			border: 5px solid  white;
+	}
+	#div2 {
+			background-color: white;
+			margin: 0 auto;
+			width: 1000px;
+			height: 670px;
+			text-align: center;
+			padding: 30px;
+			border: 5px solid  white;
+	}
+	#t {
+		text-align: left;
+	}
+	#divImg{
+
+
+		margin-bottom : .5em;
+	    table-layout: fixed;
+	    text-align: left;
+	    border: 0px solid red;
+		width: 90% !important; 
+		margin: auto;
+		padding: 70px;
+	}
+
+	
+
+</style>
+
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="div1">
+		<h1 id="aga1">Comanda de Pedidos</h1><br>
+	</div>
+	<div id="div2">
+			<span id="item-comanda"></span>
+			<span id="t">Total: <input type="text" id="total" disabled="true"></span>
+			<br>
+			<div id="divImg">
+				
+				<address>
+				    Voce pode contatar o autor em <a href="https://www.instagram.com/cleorbeth/">@cleorbeth</a>.<br>				    
+                </address>
+
+			</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	var sucoLaranja = {id:0, nome:"Suco de laranja", preco:10, categoria:"Bebidas"};
+	var cervejaSkol = {id:1, nome:"Cerveja Skol", preco:18, categoria:"Bebidas"};
+	var pratoFeito = {id:2, nome:"Prato Feito", preco:32, categoria:"Comidas"};
+	var colecao = new Object();
+	colecao["0"] =  sucoLaranja;
+	colecao["1"] = cervejaSkol;
+	colecao["2"] = pratoFeito;
+	
+	let x;
+	
+	for (x in colecao){
+		
+		document.getElementById("item-comanda").innerHTML += "<div class='divTable'><div class='divRow'><div class='divCell'>Produto: " + colecao[x].nome + "</div><div class='divCell'>Categoria: " + colecao[x].categoria + "</div> <div class='divCell'>Quantidade: <input type='text' size= '3' onKeyUp=somaTotal() name='quantidade' id='txt" + colecao[x].id + "' valor=" + colecao[x].preco + "></div>" + " <div class='divCell'>Valor: " + colecao[x].preco + "</div></div></div><br>";
+
+	}
+
+	function somaTotal(){
+
+		var arr = document.getElementsByName('quantidade');
+		var tot = 0;
+		for(let i=0; i<arr.length; i++){
+
+			if(parseInt(arr[i].value)){
+				tot += parseInt(arr[i].value) * arr[i].getAttribute('valor');				
+			}
+			
+		}
+		
+		document.getElementById('total').value = 'R$ ' + tot;
+	}
+
+	document.getElementById('txt0').focus();
+</script>
