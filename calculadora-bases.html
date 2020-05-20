@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculadora de Bases</title>
+    <style type="text/css">
+      body {
+        background-color: #4F4F4F;
+      }
+      #aga1 {
+        font-size: 70px;
+      }
+      h1 {
+        font-size: 40px;
+        padding: 0;
+
+      }
+      input[type=text] {
+        height: 30px;
+        width: 250px;
+        font-size: 30px;
+      }
+      input[type=button] {
+        height: 50px;
+        width: 300px;
+        font-size: 30px;
+      }
+      #div1 {
+        background-color: #FFF23F; 
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+        padding: 30px;
+      }
+      #div2 {
+        background-color: #F0FFFF;
+        margin: 0 auto;
+        width: 1000px;
+        height: 670px;
+        text-align: center;
+        padding: 30px;
+      }
+      #add{
+      	text-align: left;
+      	padding: 30px;
+      }
+      
+  </style>
+    </head>
+<body>
+      <div id="div1">
+        <h1 id="aga1">Calculadora de Bases</h1>
+      </div>  
+      <div id="temp">
+        <div id="div2">
+          <br><br><br>
+          <span>Binário:</span>
+          <input id="binario" type="text" onkeyup="calcular(this)"><br><br>
+          <span>Decimal:</span>
+          <input id="decimal" type="text" onkeyup="calcular(this)"><br><br>
+          <span>Octal:</span>
+          <input id="octal" type="text" onkeyup="calcular(this)"><br><br>
+          <span>Hexadecimal:</span>
+          <input id="hexadecimal" type="text" onkeyup="calcular(this)"><br><br><br><br>          
+          <input id="limpar" value="Limpar" type="button" onclick="limpar()"><br><br><br><br><br><br><br><br>         			
+		  <address id="add">
+			    Voce pode contatar o autor em <a href="https://www.instagram.com/cleorbeth/">@cleorbeth</a>.<br>				    
+	       </address>
+        </div>
+      </div>      
+</body>
+</html>
+<script language="javascript">
+function calcular(campo){
+      var escolha = campo.id;
+      
+      var binario = document.getElementById('binario');
+      var decimal = document.getElementById('decimal');
+      var octal = document.getElementById('octal');
+      var hexadecimal = document.getElementById('hexadecimal');
+
+      if(escolha == "binario"){
+         
+        decimal.value = parseInt(binario.value, 2).toString(10);
+        octal.value = parseInt(binario.value, 2).toString(8);
+        hexadecimal.value = parseInt(binario.value, 2).toString(16);       
+
+      }else if (escolha == "decimal"){ 
+        
+        binario.value = parseInt(decimal.value, 10).toString(2);
+        octal.value = parseInt(decimal.value, 10).toString(8);
+        hexadecimal.value = parseInt(decimal.value, 10).toString(16);
+        
+      }else if(escolha == "octal"){
+        binario.value = parseInt(octal.value, 8).toString(2);
+        decimal.value = parseInt(octal.value, 8).toString(10);
+        hexadecimal.value = parseInt(octal.value, 8).toString(16);              
+
+
+      }else if (escolha == "hexadecimal"){
+        binario.value = parseInt(hexadecimal.value, 16).toString(2);
+        decimal.value = parseInt(hexadecimal.value, 16).toString(10);
+        octal.value = parseInt(hexadecimal.value, 16).toString(8);
+           
+      }   
+}
+function limpar(){
+  document.getElementById('binario').value = "";
+  document.getElementById('decimal').value = "";
+  document.getElementById('octal').value = "";
+  document.getElementById('hexadecimal').value = "";
+}
+
+</script>
